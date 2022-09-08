@@ -88,6 +88,39 @@ namespace AddressBookSystemRESTSharp
                 Console.WriteLine(response.Content);
             }
         }
+        // UC24:- Ability to Update Entry in Address Book JSONServer and sync with Address Book Application Memory. 
+        [TestMethod]
+        public void OnCallingPutAPI_ReturnContactObjects()
+        {
+            //Arrange
+            //Initialize the request for PUT to add new employee
+            RestRequest request = new RestRequest("/Contacts/4", Method.PUT);
+            request.RequestFormat = DataFormat.Json;
+
+            request.AddBody(new Contact
+            {
+                FirstName = "Chanda",
+                LastName = "Devi",
+                PhoneNumber = "9855669988",
+                Address = "Davngere",
+                City = "Dav",
+                State = "Karnataka",
+                Zip = "577105",
+                Email = "chanda@gmail.com"
+            });
+
+
+            //Act
+            RestResponse response = client.ExecuteAsync(request).Result;
+
+            //Assert
+            Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+            Contact contact = JsonConvert.DeserializeObject<Contact>(response.Content);
+            Assert.AreEqual("Chanda", contact.FirstName);
+            Assert.AreEqual("Devi", contact.LastName);
+            Assert.AreEqual("222205", contact.Zip);
+            Console.WriteLine(response.Content);
+        }
 
     }
 }
