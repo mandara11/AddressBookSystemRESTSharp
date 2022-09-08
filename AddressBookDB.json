@@ -32,18 +32,8 @@
       "state": "Karnataka",
       "zip": "577105",
       "email": "chanda@gmail.com"
-    },
-    {
-      "id": 5,
-      "firstName": "Esha",
-      "lastName": "kesh",
-      "phoneNumber": "7856239865",
-      "address": " Nagar",
-      "city": "Ban",
-      "state": "Karnataka",
-      "zip": "577102",
-      "email": "esha@gmail.com"
     }
+    
 
   ]
 }
