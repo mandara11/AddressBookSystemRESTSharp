@@ -1,0 +1,26 @@
+{
+  "Contacts": [
+    {
+      "id": 1,
+      "firstname": "Mandara",
+      "lastname": "M",
+      "PhoneNumber": "9112345678",
+      "address": "Banglore",
+      "city": "Banglore",
+      "state": "Karnataka",
+      "zip": "577101",
+      "email": "mandara@gmail.com"
+    },
+    {
+      "id": 2,
+      "firstname": "Pruthvi",
+      "lastname": "Kumari",
+      "PhoneNumber": "9878616248",
+      "address": "Smg",
+      "city": "Banglr",
+      "state": "Karnataka",
+      "zip": "577105",
+      "email": "pruthvi@gmail.com"
+    }
+  ]
+}
