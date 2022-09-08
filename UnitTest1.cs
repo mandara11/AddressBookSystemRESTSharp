@@ -38,10 +38,8 @@ namespace AddressBookSystemRESTSharp
             return response;
         }
 
-        /* UC22:- Ability to Read Entries of Address Book from JSONServer.
-                  - Use RESTSharp for REST Api Calls from MSTest Test Code.
-                  - Update Address Book Memory of the Data retrieved from JSON Server.
-        */
+        // UC22:- Ability to Read Entries of Address Book from JSONServer.
+                  
         [TestMethod]
         public void ReadEntriesFromJsonServer()
         {
@@ -54,6 +52,40 @@ namespace AddressBookSystemRESTSharp
             foreach (Contact c in employeeList)
             {
                 Console.WriteLine($"Id: {c.Id}\tFullName: {c.FirstName} {c.LastName}\tPhoneNo: {c.PhoneNumber}\tAddress: {c.Address}\tCity: {c.City}\tState: {c.State}\tZip: {c.Zip}\tEmail: {c.Email}");
+            }
+        }
+        /*UC23:- Ability to Add Multiple Entries to Address Book JSONServer and sync with Address Book Application Memory.
+                 - Use RESTSharp for REST Api Calls from MSTest Test Code
+         */
+
+        [TestMethod]
+        public void OnCallingPostAPIForAContactListWithMultipleContacts_ReturnContactObject()
+        {
+            // Arrange
+            List<Contact> contactList = new List<Contact>();
+            contactList.Add(new Contact { FirstName = "Vishal", LastName = "Seth", PhoneNumber = "781654987", Address = "skp", City = "smg", State = "Karnataka", Zip = "577102", Email = "vs@gmail.com" });
+            contactList.Add(new Contact { FirstName = "Esha", LastName = "kesh", PhoneNumber = "7856239865", Address = "Nagar", City = "Ban", State = "Karnataka", Zip = "577102", Email = "esha@gmail.com" });
+
+            //Iterate the loop for each contact
+            foreach (var v in contactList)
+            {
+                //Initialize the request for POST to add new contact
+                RestRequest request = new RestRequest("/Contacts", Method.POST);
+                request.RequestFormat = DataFormat.Json;
+
+                //Added parameters to the request object such as the content-type and attaching the jsonObj with the request
+                request.AddBody(v);
+
+                //Act
+                RestResponse response = client.ExecuteAsync(request).Result;
+
+                //Assert
+                Assert.AreEqual(HttpStatusCode.Created, response.StatusCode);
+                Contact contact = JsonConvert.DeserializeObject<Contact>(response.Content);
+                Assert.AreEqual(v.FirstName, contact.FirstName);
+                Assert.AreEqual(v.LastName, contact.LastName);
+                Assert.AreEqual(v.PhoneNumber, contact.PhoneNumber);
+                Console.WriteLine(response.Content);
             }
         }
 

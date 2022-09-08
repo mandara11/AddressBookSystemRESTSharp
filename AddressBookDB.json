@@ -21,6 +21,29 @@
       "state": "Karnataka",
       "zip": "577105",
       "email": "pruthvi@gmail.com"
+    },
+    {
+      "id": 4,
+      "firstName": "Vishal",
+      "lastName": "Seth",
+      "phoneNumber": "781654987",
+      "address": "skp",
+      "city": "smg",
+      "state": "Karnataka",
+      "zip": "577102",
+      "email": "vs@gmail.com"
+    },
+    {
+      "id": 5,
+      "firstName": "Esha",
+      "lastName": "kesh",
+      "phoneNumber": "7856239865",
+      "address": " Nagar",
+      "city": "Ban",
+      "state": "Karnataka",
+      "zip": "577102",
+      "email": "esha@gmail.com"
     }
+
   ]
 }
